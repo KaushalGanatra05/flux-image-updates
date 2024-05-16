@@ -5,8 +5,8 @@ metadata:
   labels:
     app: my-app
   annotations:
-    fluxcd.io/automated: "true"          # Enable FluxCD automation
-    fluxcd.io/tag.my-container: glob: '*'  # Update on any new tag
+    fluxcd.io/automated: "true"         
+    fluxcd.io/tag.my-container: glob: '*'  
 spec:
   replicas: 3
   selector:
@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - name: my-container
-        image: kaushalganatra05/kaushal-image:latest  # Use the latest tag initially
+        image: kaushalganatra05/kaushal-image:latest 
         ports:
         - containerPort: 80
