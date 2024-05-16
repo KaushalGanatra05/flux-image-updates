@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  labels:
+    app: my-app
+  annotations:
+    fluxcd.io/automated: "true"          # Enable FluxCD automation
+    fluxcd.io/tag.my-container: glob: '*'  # Update on any new tag
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: eRail
+  template:
+    metadata:
+      labels:
+        app: eRail
+    spec:
+      containers:
+      - name: my-container
+        image: kaushalganatra05/kaushal-image:latest  # Use the latest tag initially
+        ports:
+        - containerPort: 80
