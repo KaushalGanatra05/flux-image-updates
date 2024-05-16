@@ -1,0 +1,25 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: update-image-automation-updation
+  namespace: flux-system
+spec:
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: kaushal.ganatra@improwised.com
+        name: Kaushal
+      messageTemplate: commit template
+    push:
+      branch: main
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-image-updates
+  update:
+    path: ./release/flux-system/
+    strategy: Setters
