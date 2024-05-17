@@ -19,7 +19,7 @@ spec:
   interval: 1m0s
   sourceRef:
     kind: GitRepository
-    name: flux-image-updates
+    name: flux-system
   update:
-    path: ./release/flux-system/
+    path: ./release/image-deployment.yaml
     strategy: Setters

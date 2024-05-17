@@ -2,8 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-deployment
+  namespace: flux-system
   labels:
-    app: my-app
+    app: eRail
 spec:
   replicas: 3
   selector:
@@ -14,8 +15,17 @@ spec:
       labels:
         app: eRail
     spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: my-container
-        image: kaushal-imagelatest
+        image: kaushal-image:1.0.7
         ports:
         - containerPort: 80
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
