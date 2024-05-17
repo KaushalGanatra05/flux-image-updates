@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  labels:
+    app: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: eRail
+  template:
+    metadata:
+      labels:
+        app: eRail
+    spec:
+      containers:
+      - name: my-container
+        image: kaushal-imagelatest
+        ports:
+        - containerPort: 80
