@@ -21,5 +21,5 @@ spec:
     kind: GitRepository
     name: flux-system
   update:
-    path: ./release/image-deployment.yaml
+    path: ./release/flux-system/image-deployment.yaml
     strategy: Setters
