@@ -1,31 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-deployment
-  namespace: default
-  labels:
-    app: eRail
+  name: erail
+  namespace: flux-system
 spec:
-  replicas: 3
   selector:
     matchLabels:
-      app: eRail
+      app: erail
   template:
     metadata:
       labels:
-        app: eRail
+        app: erail
     spec:
-      securityContext:
-        runAsNonRoot: true
-        seccompProfile:
-          type: RuntimeDefault
       containers:
-      - name: my-container
-        image: kaushal-image:1.0.7
-        ports:
-        - containerPort: 80
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-            - ALL
+        - name: deployment-container
+          image: kaushal-image:1.0.7
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 9898
+              protocol: TCP
