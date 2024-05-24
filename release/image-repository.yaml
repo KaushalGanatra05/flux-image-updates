@@ -7,3 +7,5 @@ metadata:
 spec:
   image: kaushalganatra05/kaushal-image
   interval: 1m0s
+  secretRef:
+    name: flux-git-auth
