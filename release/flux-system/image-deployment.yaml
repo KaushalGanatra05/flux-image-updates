@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: deployment-container
-          image: kaushalganatra05/kaushal-image:1.7.6 # {"$imagepolicy":"flux-system:update-image-automation-policy"}
+          image: kaushalganatra05/kaushal-image:1.7.7 # {"$imagepolicy":"flux-system:update-image-automation-policy"}
           imagePullPolicy: Always
           ports:
             - name: http
